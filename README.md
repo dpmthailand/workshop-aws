@@ -10,6 +10,11 @@
   - [Section 4: Try accessing application](#section-4-try-accessing-application)
   - [Section 5: Scale-in and termination](#section-5-scale-in-and-termination)
 
+**Prerequisite:** 
+1. You need to have Dynatrace SaaS tenant ready. 
+If you do not have one, please register for [free trial](https://www.dynatrace.com/trial/)
+2. You need to have AWS account with at least **EC2FullAccess** policy
+
 ## Section 1: Create Application Load Balancer
 1. In AWS Console, click on **Services**, then type and select **EC2**
 2. Go to **LOAD BALANCING** > **Load Balancers** > **Click Create Load Balancer**
@@ -34,7 +39,7 @@
 
 6. Configure Security Group
 - Select create a **new** security group
-- Set security group name and description
+- Set Security group name and description
 - Click **Next**
 
 ![](doc/Step01-06.png)
@@ -60,14 +65,14 @@ Select **Edit attributes** from **Actions** dropdown
 ![](doc/Step01-02-02.png)
 
 13. Change attributes as below
-- Change Deregistration delay to 300 -> 5 sec
+- Change Deregistration delay 300 -> 5 sec
 - Leave stickiness disabled
 
 ![](doc/Step01-02-03.png)
 
+----------------------------------
+
 ## Section 2: Prepare User Data Script
-**Prerequisite:** You need to have Dynatrace SaaS tenant ready. 
-If you do not have one, please register for [free trial](https://www.dynatrace.com/trial/)
 
 1. In Dynatrace Console, use left menu to go to **Manage** > **Deploy Dynatrace**
 
@@ -105,6 +110,8 @@ systemctl start httpd
 systemctl enable httpd
 echo "<?php echo gethostname(); echo '<br>'; phpinfo(); ?>" > /var/www/html/index.php
 ```
+
+----------------------------------
 
 ## Section 3: Create EC2 Autoscaling group
 ### Create Launch Configuration
@@ -166,6 +173,8 @@ echo "<?php echo gethostname(); echo '<br>'; phpinfo(); ?>" > /var/www/html/inde
 
 14. Click **Create Auto scaling group**
 
+----------------------------------
+
 ## Section 4: Try accessing application
 1. In EC2 Console, go to **INSTANCES** > **Instances**
 
@@ -192,7 +201,26 @@ There should be two hosts showing up
 
 ![](doc/Step04-03.png)
 
+----------------------------------
+
 ## Section 5: Scale-in and termination
-1. In EC2 Console, go to **INSTANCES** > **Instances**
+### Force scale-in event
+1. In EC2 Console, go to **AUTO SCALING** > **Auto Scaling Groups**
+2. Click on Autoscaling group created in Section 3, then click **Edit** button
+
+![](doc/Section05-02.png)
+
+3. Reduce both *Desired Capacity* and *Min* to **1**
+
+![](doc/Section05-03.png)
+
+4. Recheck result using steps from [Section 4](#section-4-try-accessing-application)
+***What do you see?***
+
+### Suddenly terminate EC2
+5. In EC2 Console, go to **INSTANCES** > **Instances**
+6. Select remaining EC2 created by Autoscaling group, then **Terminate** it
+7. Recheck result using steps from [Section 4](#section-4-try-accessing-application)
+***What do you see?***
 
 [Go to Home](#)
