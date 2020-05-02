@@ -4,7 +4,7 @@
 - This hands-on instruction is to setup simple EC2 Autoscaling group, then install Dynatrace OneAgent
 - The propose is for user to see how quickly and seamlessly to deploy OneAgent and let it performs advanced observability
 - There are 5 sections
-  - [Section 1: Create Application Load Balancer](README.md "Section 1: Create Application Load Balancer")
+  - [Section 1: Create Application Load Balancer](# "Section 1: Create Application Load Balancer")
   - [Section 2: Prepare User Data Script](. "Section 2: Prepare User Data Script")
   - [Section 3: Create EC2 Autoscaling group](. "Section 3: Create EC2 Autoscaling group")
   - [Section 4: Try accessing application](. "Section 4: Try accessing application")
