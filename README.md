@@ -201,10 +201,25 @@ There should be two hosts showing up
 
 ![](doc/Step04-03.png)
 
+### Here is the current architecture looks like
+
+![](doc/Diagram01-Complete.png)
+
+### Troubleshooting
+If things are not going well, here is what you should check
+- Proper Security groups inbound / outbound rules
+- Review Launch configuration
+- EC2 is up and running. If not, you can check log from **Instance Settings > Get System Log**
+
+![](doc/Troubleshooting.png)
+
 ----------------------------------
 
 ## Section 5: Scale-in and termination
 ### Force scale-in event
+
+![](doc/Diagram02-Scale-in.png)
+
 1. In EC2 Console, go to **AUTO SCALING** > **Auto Scaling Groups**
 2. Click on Autoscaling group created in Section 3, then click **Edit** button
 
@@ -218,9 +233,21 @@ There should be two hosts showing up
 ***What do you see?***
 
 ### Suddenly terminate EC2
+
+![](doc/Diagram03-Terminate.png)
+
 5. In EC2 Console, go to **INSTANCES** > **Instances**
-6. Select remaining EC2 created by Autoscaling group, then **Terminate** it
+6. Select remaining EC2 created by Autoscaling group, then from **Actions** menu, **Terminate** it
 7. Recheck result using steps from [Section 4](#section-4-try-accessing-application)
 ***What do you see?***
+
+----------------------------------
+
+## Clean up
+### Below is the items you need to delete
+1. Delete ASG
+2. Delete Launch configuration
+3. Delete ALB
+4. Terminate all EC2
 
 [Go to Home](#)
