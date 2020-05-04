@@ -17,7 +17,7 @@ If you do not have one, please register for [free trial](https://www.dynatrace.c
 
 ## Section 1: Create Application Load Balancer
 1. In AWS Console, click on **Services**, then type and select **EC2**
-2. Go to **LOAD BALANCING** > **Load Balancers** > **Click Create Load Balancer**
+2. Go to **LOAD BALANCING** > **Load Balancers** > Click **Create Load Balancer**
 
 ![](doc/Step01-02.png)
 
@@ -201,7 +201,7 @@ There should be two hosts showing up
 
 ![](doc/Step04-03.png)
 
-### Here is the current architecture looks like
+### Here is how the current architecture looks like
 
 ![](doc/Diagram01-Complete.png)
 
